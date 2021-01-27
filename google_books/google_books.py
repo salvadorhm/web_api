@@ -10,10 +10,9 @@ print(type(books))
 
 items = books["items"]
 
-x = items[3]
-
-coded = json.dumps(x)
+coded = json.dumps(items)
 decoded = json.loads(coded)
 
-print(decoded["volumeInfo"]["infoLink"])
+print(decoded[0]["volumeInfo"]["infoLink"])
+
 

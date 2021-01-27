@@ -13,12 +13,19 @@ class Index:
         form = web.input()
         book = form.book
         result = requests.get('https://www.googleapis.com/books/v1/volumes?q='+book)
+        
         books = result.json()
+        print(type(books))
+
         items = books["items"]
-        x = items[3]
-        coded = json.dumps(x)
+
+        coded = json.dumps(items)
         decoded = json.loads(coded)
 
-        link = "<a target='blank' href='"+decoded["volumeInfo"]["infoLink"]+"'>"+book+"</a>"
+        print(decoded[0]["volumeInfo"]["infoLink"])
+        
+        url = decoded[0]["volumeInfo"]["infoLink"]
+
+        link = "<a target='blank' href='"+url+"'>"+book+"</a>"
 
         return link
